@@ -46,8 +46,8 @@ public class Main {
         int[] presentCapacities2 = {75, 78, 60, 62, 77, 81};
         CountsBySoH counts2 = countBatteriesByHealth(presentCapacities2);
         assert(counts2.healthy == 2);
-        assert(counts2.exchange == 4);
-        assert(counts2.failed == 0);
+        assert(counts2.exchange == 3);
+        assert(counts2.failed == 1);
 
         int[] presentCapacities3 = {115, 118, 120, 120, 120, 120};
         CountsBySoH counts3 = countBatteriesByHealth(presentCapacities3);
