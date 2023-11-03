@@ -9,6 +9,21 @@ public class Main {
 
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
+    for (int presentCapacity : presentCapacities) {
+        // Calculate SoH for the current battery
+        double soh = ((double) presentCapacity / 120) * 100;
+
+        // Classify the battery based on SoH
+        if (soh > 80) {
+            counts.healthy++;
+        } else if (soh >= 62) {
+            counts.exchange++;
+        } else {
+            counts.failed++;
+        }
+    }
+
+    
     return counts;
   }
 
@@ -26,3 +41,8 @@ public class Main {
     testBucketingByHealth();
   }
 }
+
+    
+   
+
+ 
