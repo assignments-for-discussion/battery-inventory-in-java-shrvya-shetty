@@ -1,0 +1,10 @@
+The "BunchBySoH" project is a Java application designed to classify and count batteries based on their State of Health (SoH) values. 
+This program helps categorize batteries as "healthy," "for exchange," or "failed" based on their SoH % (percenetage).
+
+The main function is :
+
+1)Calculating the SoH for a collection of batteries
+2)Classifying each battery into one of the three categories: "healthy" (SoH > 80), "for exchange" (SoH >= 62), or "failed" (SoH < 62).
+3)Counting and presenting the number of batteries in each category.
+The test cases cover various scenarios to ensure the accuracy of the classification and counting process.
+
