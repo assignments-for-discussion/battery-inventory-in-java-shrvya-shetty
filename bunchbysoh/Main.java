@@ -10,10 +10,15 @@ public class Main {
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
     for (int presentCapacity : presentCapacities) {
+      //the SoH for each battery is calculated by dividing its present capacity by 120 and then multiplying by 100. 
+      
+     
         // Calculate SoH for the current battery
-        double soh = ((double) presentCapacity / 120) * 100;
+        double soh = ((double) presentCapacity / 120) * 100;//This provide a percentage representing the battery's SoH. 
 
         // Classify the battery based on SoH
+       //The batteries are then classified into one of three categories: healthy, exchange, or failed, based on their SoH values.
+      //by counter increment 
         if (soh > 80) {
             counts.healthy++;
         } else if (soh >= 62) {
