@@ -54,20 +54,18 @@ public class Main {
  static void testBucketingByHealth() {
     System.out.println("Counting batteries by SoH...\n");
    
+int[] newCapacities = {120, 100, 30, 22, 50};
+        CountsBySoH counts1 = countBatteries(newCapacities);
 
-   int[] newcapacities={120,100,30,22,50};
-   CountsBySoH counts1 = countBatteries(newcapacities);
-  
-   assert(counts1.healthy == 1);
-   
-    assert(counts1.exchange == 0);
-    assert(counts1.failed == 4);
+        assert counts1.healthy == 1;
+        assert counts1.exchange == 0;
+        assert counts1.failed == 4;
    
    
     // Original test case
     int[] presentCapacities = {113, 116, 80, 95, 92, 70};
     CountsBySoH counts = countBatteriesByHealth(presentCapacities);
-   double healthvalue=(counts1.healthy+counts.healthy);
+   //double healthvalue=(counts1.healthy+counts.healthy);
     assert(counts.healthy == 2);
     assert(counts.exchange == 3);
     assert(counts.failed == 1);
