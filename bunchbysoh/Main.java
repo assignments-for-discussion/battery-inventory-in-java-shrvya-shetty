@@ -6,9 +6,28 @@ public class Main {
     public int exchange = 0;
     public int failed = 0;
   };
-
+   static CountBySOH countBatteries(int[] newcapacities)
+  {
+     CountsBySoH counts1 = new CountsBySoH();
+    for (int newcapacity : newcapacities) {
+      double soh1 = ((double) newcapacity / 180) * 100;
+      if (soh > 80) {
+            counts1.healthy++;
+        } else if (soh >= 62) {
+            counts1.exchange++;
+        } else {
+            counts1.failed++;
+        }
+    } 
+    return counts1;
+  }
+  
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
+      
+    
+
+    
     for (int presentCapacity : presentCapacities) {
       //the SoH for each battery is calculated by dividing its present capacity by 120 and then multiplying by 100. 
       
@@ -34,7 +53,15 @@ public class Main {
 
  static void testBucketingByHealth() {
     System.out.println("Counting batteries by SoH...\n");
+   
 
+   int[] newcapacities={120,100,30,22,50};
+   CountsBySoH counts1 = countBatteries(newcapacities);
+   assert(counts.healthy == 1);
+    assert(counts.exchange == 0);
+    assert(counts.failed == 4);
+   
+   
     // Original test case
     int[] presentCapacities = {113, 116, 80, 95, 92, 70};
     CountsBySoH counts = countBatteriesByHealth(presentCapacities);
