@@ -6,21 +6,21 @@ public class Main {
     public int exchange = 0;
     public int failed = 0;
   };
-   static CountBySOH countBatteries(int[] newcapacities)
-  {
-     CountsBySoH counts1 = new CountsBySoH();
-    for (int newcapacity : newcapacities) {
-      double soh1 = ((double) newcapacity / 180) * 100;
-      if (soh > 80) {
-            counts1.healthy++;
-        } else if (soh >= 62) {
-            counts1.exchange++;
-        } else {
-            counts1.failed++;
+   static CountsBySoH countBatteries(int[] newCapacities) {
+        CountsBySoH counts = new CountsBySoH();
+        for (int newCapacity : newCapacities) {
+            double soh = ((double) newCapacity / 180) * 100;
+            if (soh > 80) {
+                counts.healthy++;
+            } else if (soh >= 62) {
+                counts.exchange++;
+            } else {
+                counts.failed++;
+            }
         }
-    } 
-    return counts1;
-  }
+        return counts;
+    }
+
   
   static CountsBySoH countBatteriesByHealth(int[] presentCapacities) {
     CountsBySoH counts = new CountsBySoH();
@@ -57,14 +57,17 @@ public class Main {
 
    int[] newcapacities={120,100,30,22,50};
    CountsBySoH counts1 = countBatteries(newcapacities);
-   assert(counts.healthy == 1);
-    assert(counts.exchange == 0);
-    assert(counts.failed == 4);
+  
+   assert(counts1.healthy == 1);
+   
+    assert(counts1.exchange == 0);
+    assert(counts1.failed == 4);
    
    
     // Original test case
     int[] presentCapacities = {113, 116, 80, 95, 92, 70};
     CountsBySoH counts = countBatteriesByHealth(presentCapacities);
+   double healthvalue=(counts1.healthy+counts.healthy);
     assert(counts.healthy == 2);
     assert(counts.exchange == 3);
     assert(counts.failed == 1);
